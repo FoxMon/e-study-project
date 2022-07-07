@@ -12,11 +12,8 @@ npm start
 
 `React.js 18.2.0`
 
-# Setting
+# Open source
 
 ```
-Eslint
-    var 사용 X
-    세미콜론 사용 금지
-    문자열 Double quotes 사용
+Material UI
 ```
