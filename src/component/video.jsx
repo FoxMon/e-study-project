@@ -11,6 +11,12 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 const Video = ({ video }) => {
     return (
         <Card sx={cardStyle}>
+            <CardMedia
+                sx={videoStyle}
+                component="img"
+                alt="video"
+                src={video.snippet.thumbnails.medium.url}
+            />
             <Box sx={boxStyle}>
                 <CardContent sx={contentStyle}>
                     <Typography component="div" variant="h5">
@@ -30,18 +36,12 @@ const Video = ({ video }) => {
                     </IconButton>
                 </Box>
             </Box>
-            <CardMedia
-                sx={videoStyle}
-                component="img"
-                alt="video"
-                src={video.snippet.thumbnails.medium.url}
-            />
         </Card>
     )
 }
 
 const cardStyle = {
-    display: "flex",
+    display: "block",
 }
 
 const boxStyle = {
@@ -66,7 +66,8 @@ const arrowIconStyle = {
 }
 
 const videoStyle = {
-    width: 150,
+    height: 200,
+    width: 400,
 }
 
 export default Video
