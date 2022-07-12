@@ -24,9 +24,9 @@ const VideoListContainer = () => {
 const containerStyle = {
     width: "100%",
     height: "100%",
-    display: "flex",
-    flexWrap: "wrap",
-    margin: 0,
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr 1fr",
+    gridGap: 20,
 }
 
 export default VideoListContainer
