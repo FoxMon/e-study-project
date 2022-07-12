@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { Container } from "@mui/material"
 import Video from "../component/video"
+import VideoDetail from "../component/videoDetail"
 import YoutubeFetcher from "../fetcher/youtubeFetcher"
 
 const VideoListContainer = () => {
     const [videos, setVideos] = useState([])
+    const [selected, setSelected] = useState(null)
 
     useEffect(() => {
         YoutubeFetcher.getMostPopular().then((result) => {
@@ -12,10 +14,19 @@ const VideoListContainer = () => {
         })
     }, [])
 
+    const onPlayButtonClickEventHandler = useCallback((video) => {
+        setSelected(video)
+    }, [])
+
     return (
         <Container sx={containerStyle}>
+            {selected && <VideoDetail selectedVideo={selected} />}
             {videos.map((v) => (
-                <Video key={v.id} video={v} />
+                <Video
+                    key={v.id}
+                    video={v}
+                    onPlayButtonClickEvent={onPlayButtonClickEventHandler}
+                />
             ))}
         </Container>
     )
