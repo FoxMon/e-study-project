@@ -9,7 +9,6 @@ import {
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 
 const Video = ({ video }) => {
-    console.log(video)
     return (
         <Card sx={cardStyle}>
             <Box sx={boxStyle}>
