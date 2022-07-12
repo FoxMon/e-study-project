@@ -8,7 +8,11 @@ import {
 } from "@mui/material"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 
-const Video = ({ video }) => {
+const Video = ({ video, onPlayButtonClickEvent }) => {
+    const onPlayButtonClickEventHandler = (video) => () => {
+        onPlayButtonClickEvent(video)
+    }
+
     return (
         <Card sx={cardStyle}>
             <CardMedia
@@ -31,7 +35,10 @@ const Video = ({ video }) => {
                     </Typography>
                 </CardContent>
                 <Box sx={contentBoxStyle}>
-                    <IconButton aria-label="play/pause">
+                    <IconButton
+                        aria-label="play/pause"
+                        onClick={onPlayButtonClickEventHandler(video)}
+                    >
                         <PlayArrowIcon sx={arrowIconStyle} />
                     </IconButton>
                 </Box>
