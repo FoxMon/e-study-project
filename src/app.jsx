@@ -1,5 +1,7 @@
+import VideoListContainer from "./pages/videoListContainer"
+
 function App() {
-    return <div className="App"></div>
+    return <VideoListContainer />
 }
 
 export default App
