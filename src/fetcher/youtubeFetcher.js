@@ -14,7 +14,7 @@ YoutubeFetcher.getMostPopular = async function () {
 }
 
 YoutubeFetcher.searchVideo = async function (q) {
-    const res = await AxiosAgent.fetcher.get("search", {
+    const res = await AxiosAgent.fetcher.get("/search", {
         params: {
             part: "snippet",
             maxResults: 20,
