@@ -3,7 +3,7 @@ import AxiosAgent from "../service/axiosAgent"
 const YoutubeFetcher = {}
 
 YoutubeFetcher.getMostPopular = async function () {
-    const res = await AxiosAgent.fetcher.get("videos", {
+    const res = await AxiosAgent.fetcher.get("/videos", {
         params: {
             part: "snippet",
             chart: "mostPopular",
