@@ -15,4 +15,5 @@ ErrorUtil.assert = function (p, a) {
     }
 }
 
+Object.freeze(ErrorUtil)
 export default ErrorUtil
