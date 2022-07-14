@@ -32,18 +32,20 @@ const VideoListContainer = () => {
         })
     }, [])
 
-    const onSearchResultEventHandler = useCallback((data) => {
-        const sArr = []
-        data.forEach((d) => {
-            const obj = new YoutubeType(
-                d.id,
-                d.snippet.title,
-                d.snippet.channelTitle,
-                d.snippet.thumbnails.medium.url
-            )
-            sArr.push(obj)
+    const onSearchResultEventHandler = useCallback((value) => {
+        YoutubeFetcher.searchVideo(value).then((data) => {
+            const sArr = []
+            data.forEach((d) => {
+                const obj = new YoutubeType(
+                    d.id,
+                    d.snippet.title,
+                    d.snippet.channelTitle,
+                    d.snippet.thumbnails.medium.url
+                )
+                sArr.push(obj)
+            })
+            setVideos(sArr)
         })
-        setVideos(sArr)
     }, [])
 
     return (
