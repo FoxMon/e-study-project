@@ -8,7 +8,7 @@ const VideoDetail = () => {
             <CardMedia
                 sx={mediaStyle}
                 component="iframe"
-                src={`https://www.youtube-nocookie.com/embed/${state.id}`}
+                src={`https://www.youtube-nocookie.com/embed/${state.uuid}`}
                 alt="video"
             />
         </Box>
