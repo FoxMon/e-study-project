@@ -1,7 +1,8 @@
+import Symbol from "../util/symbol"
 import ErrorUtil from "../util/errorUtil"
 
 class YoutubeType extends Symbol {
-    constructor(uuid, title, channel, img, video) {
+    constructor(uuid, title, channel, img) {
         super("youtube")
         ErrorUtil.invalidParam(uuid)
         this.uuid = uuid
@@ -11,8 +12,6 @@ class YoutubeType extends Symbol {
         this.channel = channel
         ErrorUtil.invalidParam(img)
         this.img = img
-        ErrorUtil.invalidParam(video)
-        this.video = video
     }
 }
 
