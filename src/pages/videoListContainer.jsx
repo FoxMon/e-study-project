@@ -38,6 +38,7 @@ const containerStyle = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr 1fr 1fr",
     gridGap: 20,
+    mt: 2,
 }
 
 export default VideoListContainer
