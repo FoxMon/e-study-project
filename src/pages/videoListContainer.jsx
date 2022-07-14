@@ -1,12 +1,12 @@
-import { useEffect, useState, useCallback } from "react"
+import React, { useEffect, useState, useCallback } from "react"
 import { useNavigate } from "react-router"
 import { Container } from "@mui/material"
 import Video from "../component/video"
+import Header from "../component/nav/header"
 import YoutubeFetcher from "../fetcher/youtubeFetcher"
 
 const VideoListContainer = () => {
     const [videos, setVideos] = useState([])
-    const [selected, setSelected] = useState(null)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -16,22 +16,28 @@ const VideoListContainer = () => {
     }, [])
 
     const onPlayButtonClickEventHandler = useCallback((video) => {
-        setSelected(video)
         navigate("/detail", {
             state: video,
         })
     }, [])
 
+    const onSearchResultEventHandler = useCallback((data) => {
+        setVideos(data)
+    }, [])
+
     return (
-        <Container sx={containerStyle}>
-            {videos.map((v) => (
-                <Video
-                    key={v.id}
-                    video={v}
-                    onPlayButtonClickEvent={onPlayButtonClickEventHandler}
-                />
-            ))}
-        </Container>
+        <React.Fragment>
+            <Header onSearchResultEvent={onSearchResultEventHandler} />
+            <Container sx={containerStyle}>
+                {videos.map((v) => (
+                    <Video
+                        key={v.id}
+                        video={v}
+                        onPlayButtonClickEvent={onPlayButtonClickEventHandler}
+                    />
+                ))}
+            </Container>
+        </React.Fragment>
     )
 }
 
