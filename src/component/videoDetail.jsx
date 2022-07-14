@@ -1,15 +1,15 @@
+import { useLocation } from "react-router"
 import { Box, CardMedia } from "@mui/material"
 
-const VideoDetail = ({ selectedVideo }) => {
-    console.log(selectedVideo)
+const VideoDetail = () => {
+    const { state } = useLocation()
     return (
         <Box sx={boxStyle}>
             <CardMedia
                 sx={mediaStyle}
                 component="iframe"
-                src={`https://www.youtube-nocookie.com/embed/${selectedVideo.id}`}
+                src={`https://www.youtube-nocookie.com/embed/${state.id}`}
                 alt="video"
-                allowFullScreen={true}
             />
         </Box>
     )
@@ -20,8 +20,10 @@ const boxStyle = {
 }
 
 const mediaStyle = {
-    width: "500px",
+    width: "90%",
     height: "500px",
+    margin: "0 auto",
+    mt: 2,
 }
 
 export default VideoDetail
