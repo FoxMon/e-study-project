@@ -20,19 +20,19 @@ const Video = memo(({ video, onPlayButtonClickEvent }) => {
                 sx={videoStyle}
                 component="img"
                 alt="video"
-                src={video.snippet.thumbnails.medium.url}
+                src={video.img}
             />
             <Box sx={boxStyle}>
                 <CardContent sx={contentStyle}>
                     <Typography component="div" variant="h5">
-                        {video.snippet.title}
+                        {video.title}
                     </Typography>
                     <Typography
                         variant="subtitle1"
                         color="text.secondary"
                         component="div"
                     >
-                        {video.snippet.channelTitle}
+                        {video.channel}
                     </Typography>
                 </CardContent>
                 <Box sx={contentBoxStyle}>
