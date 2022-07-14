@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react"
 import {
     Box,
     AppBar,
@@ -11,6 +12,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu"
 import SearchIcon from "@mui/icons-material/Search"
 import { createTheme } from "@mui/material/styles"
+import YoutubeFetcher from "../../fetcher/youtubeFetcher"
 
 const theme = createTheme({
     palette: {
@@ -50,7 +52,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
     "& .MuiInputBase-input": {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create("width"),
         width: "100%",
@@ -63,7 +64,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }))
 
-function Header() {
+function Header({ onSearchResultEvent }) {
+    const onKeyDownEventHandler = useCallback((e) => {
+        if (e.key != "Enter") return
+        const value = e.target.value
+        YoutubeFetcher.searchVideo(value).then((data) =>
+            onSearchResultEvent(data)
+        )
+    }, [])
+
     return (
         <Box sx={boxStyle}>
             <AppBar theme={theme} position="static">
@@ -88,7 +97,10 @@ function Header() {
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
-                        <StyledInputBase placeholder="Search…" />
+                        <StyledInputBase
+                            onKeyDown={onKeyDownEventHandler}
+                            placeholder="Search…"
+                        />
                     </Search>
                 </Toolbar>
             </AppBar>
