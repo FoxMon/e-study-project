@@ -3,6 +3,7 @@ import { useNavigate } from "react-router"
 import { Container } from "@mui/material"
 import Video from "../component/video"
 import Header from "../component/nav/header"
+import YoutubeType from "../type/youtubeType"
 import YoutubeFetcher from "../fetcher/youtubeFetcher"
 
 const VideoListContainer = () => {
@@ -11,7 +12,17 @@ const VideoListContainer = () => {
 
     useEffect(() => {
         YoutubeFetcher.getMostPopular().then((result) => {
-            setVideos(result)
+            const vArr = []
+            result.forEach((d) => {
+                const obj = new YoutubeType(
+                    d.id,
+                    d.snippet.title,
+                    d.snippet.channelTitle,
+                    d.snippet.thumbnails.medium.url
+                )
+                vArr.push(obj)
+            })
+            setVideos(vArr)
         })
     }, [])
 
@@ -22,7 +33,17 @@ const VideoListContainer = () => {
     }, [])
 
     const onSearchResultEventHandler = useCallback((data) => {
-        setVideos(data)
+        const sArr = []
+        data.forEach((d) => {
+            const obj = new YoutubeType(
+                d.id,
+                d.snippet.title,
+                d.snippet.channelTitle,
+                d.snippet.thumbnails.medium.url
+            )
+            sArr.push(obj)
+        })
+        setVideos(sArr)
     }, [])
 
     return (
@@ -31,7 +52,7 @@ const VideoListContainer = () => {
             <Container sx={containerStyle}>
                 {videos.map((v) => (
                     <Video
-                        key={v.id}
+                        key={v.uuid}
                         video={v}
                         onPlayButtonClickEvent={onPlayButtonClickEventHandler}
                     />
