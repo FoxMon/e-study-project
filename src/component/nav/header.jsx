@@ -68,9 +68,7 @@ function Header({ onSearchResultEvent }) {
     const onKeyDownEventHandler = useCallback((e) => {
         if (e.key != "Enter") return
         const value = e.target.value
-        YoutubeFetcher.searchVideo(value).then((data) =>
-            onSearchResultEvent(data)
-        )
+        onSearchResultEvent(value)
     }, [])
 
     return (
