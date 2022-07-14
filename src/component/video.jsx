@@ -1,3 +1,4 @@
+import { memo } from "react"
 import {
     Card,
     CardContent,
@@ -8,7 +9,7 @@ import {
 } from "@mui/material"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 
-const Video = ({ video, onPlayButtonClickEvent }) => {
+const Video = memo(({ video, onPlayButtonClickEvent }) => {
     const onPlayButtonClickEventHandler = (video) => () => {
         onPlayButtonClickEvent(video)
     }
@@ -45,7 +46,7 @@ const Video = ({ video, onPlayButtonClickEvent }) => {
             </Box>
         </Card>
     )
-}
+})
 
 const cardStyle = {
     display: "block",
