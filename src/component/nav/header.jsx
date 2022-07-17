@@ -12,7 +12,6 @@ import {
 import MenuIcon from "@mui/icons-material/Menu"
 import SearchIcon from "@mui/icons-material/Search"
 import { createTheme } from "@mui/material/styles"
-import YoutubeFetcher from "../../fetcher/youtubeFetcher"
 
 const theme = createTheme({
     palette: {
